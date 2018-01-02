@@ -20,7 +20,8 @@ class CreatePostsTable extends Migration
             $table->text('post_title');
             $table->integer('post_status');
             $table->timestamps();
-            $table->index('post_status','post_author');
+            $table->index('post_author');
+            $table->index('post_status');
         });
     }
 

@@ -19,7 +19,8 @@ class CreatePostMetaTable extends Migration
             $table->char('meta_key');
             $table->longText('meta_value');
             $table->timestamps();
-            $table->index('post_id','meta_key');
+            $table->index('meta_key');
+            $table->index('post_id');
         });
     }
 
