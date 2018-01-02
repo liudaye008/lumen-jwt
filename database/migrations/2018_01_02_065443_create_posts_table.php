@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMetaTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateMetaTable extends Migration
      */
     public function up()
     {
-        Schema::create('meta', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_id');
-            $table->char('meta_key');
-            $table->longText('meta_value');
+            $table->bigInteger('post_author');
+            $table->longText('post_content');
+            $table->text('post_title');
+            $table->integer('post_status');
             $table->timestamps();
+            $table->index('post_status','post_author');
         });
     }
 
@@ -29,6 +31,6 @@ class CreateMetaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meta');
+        Schema::dropIfExists('posts');
     }
 }
