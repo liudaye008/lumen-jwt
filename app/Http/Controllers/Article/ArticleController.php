@@ -17,22 +17,40 @@ class ArticleController extends Controller
         $article->save();
         return response()->json([
             'id' => 1,
-            'url' => $article,
+            'message' => $article,
         ]);
     }
 
     public function delete(Request $request)
     {
-
+//        print_r($request->status);die;
         $article = new Article;
-        $article->post_author = 1;
-        $article->post_content = 1;
-        $article->post_title = 1;
-        $article->post_status = 1;
+        $article->destroy(1);
+        return response()->json([
+            'id' => 1,
+            'message' => $article,
+        ]);
+    }
+
+    public function show(Request $request)
+    {
+        $article = new Article;
+        $article = $article->find(3);
+        return response()->json([
+            'id' => 1,
+            'message' => $article,
+        ]);
+    }
+
+    public function update(Request $request){
+        $article = new Article;
+        $article = $article->find(3);
+        $article->post_title = '亚历山大';
         $article->save();
         return response()->json([
             'id' => 1,
-            'url' => $article,
+            'message' => $article,
         ]);
     }
+
 }

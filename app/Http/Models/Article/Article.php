@@ -7,7 +7,9 @@ class Article extends Model {
     const TABLE_NAME = 'posts';
     protected $table = self::TABLE_NAME;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'status'
+    ];
 
     protected $dates = [];
 

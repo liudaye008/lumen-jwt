@@ -29,3 +29,6 @@ $router->group(['middleware' => 'jwt.auth'], function() use ($router) {
 $router->post('file/upload', 'File\FileController@upload');
 
 $router->post('article/create', 'Article\ArticleController@create');
+$router->delete('article/delete', 'Article\ArticleController@delete');
+$router->get('article/show', 'Article\ArticleController@show');
+$router->put('article/update', 'Article\ArticleController@update');
