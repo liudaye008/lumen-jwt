@@ -1,0 +1,26 @@
+1.数据库还原
+php artisan migrate
+
+2.入门接口：  
+1)注册：
+url:
+    http://lumen.cm/auth/register
+headers:  
+	Content-Type=application/x-www-form-urlencoded  
+body:  
+	name=test,
+	password=123456,
+	email=lumen@me.com
+2)登陆:
+url:
+    http://lumen.cm/auth/login
+headers:
+    Content-Type=application/x-www-form-urlencoded
+body:
+    password=123456,
+    email=lumen@me.com
+3)jwt中间键:
+url:
+    http://lumen.cm/users
+headers:
+    token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.

@@ -25,3 +25,5 @@ $router->group(['middleware' => 'jwt.auth'], function() use ($router) {
         'uses' => 'User\UserController@info'
     ]);
 });
+
+$router->post('file/upload', 'File\FileController@upload');

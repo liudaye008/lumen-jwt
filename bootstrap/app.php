@@ -103,4 +103,11 @@ $app->router->group([
     require __DIR__.'/../routes/web.php';
 });
 
+$app->configureMonologUsing(function(Monolog\Logger $monolog) use ($app) {
+    return $monolog->pushHandler(
+        new \Monolog\Handler\RotatingFileHandler($app->storagePath().'/logs/log.log')
+    );
+});
+
+
 return $app;
