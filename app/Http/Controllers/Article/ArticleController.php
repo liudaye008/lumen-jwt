@@ -11,7 +11,8 @@ class ArticleController extends Controller
 
         $article = new Article;
         $article->post_author = $request->author;
-        $article->post_content = $request->content;
+        $article->post_content = $request->body;
+        $article->post_description = $request->description;
         $article->post_title = $request->title;
         $article->post_status = $request->status;
         $article->save();
@@ -21,31 +22,44 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function delete(Request $request)
+    public function delete(Request $request,$id)
     {
-//        print_r($request->status);die;
         $article = new Article;
-        $article->destroy(1);
+        $article = $article->destroy($id);
         return response()->json([
-            'id' => 1,
+            'code' => 200,
             'message' => $article,
         ]);
     }
 
-    public function show(Request $request)
+    public function show(Request $request,$id)
     {
         $article = new Article;
-        $article = $article->find(3);
-        return response()->json([
-            'id' => 1,
-            'message' => $article,
-        ]);
+        $article = $article->find($id);
+        return response()->json(
+            $article
+        );
     }
 
-    public function update(Request $request){
+    public function index(Request $request)
+    {
+        var_dump($request->page);
         $article = new Article;
-        $article = $article->find(3);
-        $article->post_title = '亚历山大';
+        $article = $article->get();
+        return response()->json(
+            $article
+        );
+    }
+
+    public function update(Request $request,$id){
+        $article = new Article;
+        $article = $article->find($id);
+        if (!empty($request->title)){
+            $article->post_title = $request->title;
+        }
+//        $article->post_author = $request->author;
+//        $article->post_content = $request->content;
+//        $article->post_status = $request->status;
         $article->save();
         return response()->json([
             'id' => 1,

@@ -1,10 +1,10 @@
-<?php namespace Models\Article;
+<?php namespace Models\System;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model {
+class System extends Model {
 
-    const TABLE_NAME = 'posts';
+    const TABLE_NAME = 'sys_meta';
     protected $table = self::TABLE_NAME;
 
 

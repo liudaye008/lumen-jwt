@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->bigInteger('post_author');
             $table->longText('post_content');
+            $table->string('post_description');
             $table->text('post_title');
             $table->integer('post_status');
             $table->timestamps();
